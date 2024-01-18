@@ -63,7 +63,8 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
-  if (status === "loading") return <Skeleton width={"3rem"} />;
+  if (status === "loading")
+    return <Skeleton width={"1.8rem"} height={"1.8rem"} borderRadius={"50%"} />;
 
   if (status === "unauthenticated")
     return (
