@@ -21,3 +21,8 @@ body {
     @apply text-zinc-500 hover:text-zinc-800 transition-colors;
   }
 }
+
+#delete-btn {
+  background-color: #e5484d !important;
+  color: var(--accent-9-contrast);
+}
