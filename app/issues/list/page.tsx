@@ -1,8 +1,8 @@
 import { Pagination } from "@/app/components";
 import prisma from "@/prisma/client";
-import { Status } from "@prisma/client";
+import { Issue, Status } from "@prisma/client";
 import IssueActions from "./IssueActions";
-import IssueTable, { IssueQuery, columnNames } from "./IssueTable";
+import IssueTable, { IssueQuery } from "./IssueTable";
 import { Flex } from "@radix-ui/themes";
 import { Metadata } from "next";
 interface Props {
@@ -44,6 +44,18 @@ const IssuesPage = async ({ searchParams }: Props) => {
     </Flex>
   );
 };
+
+const columns: { label: string; value: keyof Issue; className?: string }[] = [
+  { label: "Issue", value: "title" },
+  { label: "Status", value: "status", className: "hidden md:table-cell" },
+  { label: "Created", value: "createdAt", className: "hidden md:table-cell" },
+  {
+    label: "Assigned To",
+    value: "assignedToUserId",
+    className: "hidden md:table-cell",
+  },
+];
+const columnNames = columns.map((column) => column.value);
 
 // export const dynamic = 'force-dynamic';
 export const revalidate = 0;
